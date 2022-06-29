@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-  <title>SvelteKit Auth</title>
+  <title>Pomonator</title>
 </svelte:head>
 
 <nav>
