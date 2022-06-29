@@ -1,8 +1,8 @@
 ## This is based on...
 
-This project was created with `create-svelte` following Joy of Code's....
+This project was created with `create-svelte` following Joy of Code's tutorial https://joyofcode.xyz/sveltekit-authentication-using-cookies
 
-The authentication scheme has been extended to....
+The authentication scheme has been extended to match cookies against the id of `authentication` records in the database instead of matching cookies against the id of `user` records. This is more secure because the authentication records expire and are less likely to be leaked than the user id.
 
 ## Pomonator
 
