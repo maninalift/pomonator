@@ -1,0 +1,41 @@
+ 
+ @font-face {
+    font-family: 'Dijkstra';
+    size-adjust: 150%;
+    src: url('/fonts/Dijkstra Medium/Dijkstra Medium.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+     url('/fonts/Dijkstra Medium/Dijkstra Medium.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+  }  
+ 
+      /* -------   WIREFRAME STYLE -------- */
+
+* {
+    font-family: 'Dijkstra';
+}
+body div div, body .button, body nav, body nav a {
+        border-color: white;
+        padding:0px;
+        margin: 5px;
+        border-style:solid;
+        /* display:inline-block; */
+        /* margin:6px auto; */
+        border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+        padding:1em;
+        line-height:1.5em;
+    }
+
+    body div .no-border {
+        border-style: none;
+        border-width: 0px;
+        padding: 0px;
+    }
+
+    body div .solid {
+      border:solid 5px;
+    }
+    body div .dotted{
+      border:dotted 5px;
+    }
+    .dashed{
+      border:dashed 5px;
+    }
+

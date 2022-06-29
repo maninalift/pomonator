@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  username     String   @unique
+  passwordHash String
+
+  admin        Boolean  @default(false)
+
+  name         String
+
+  student Student?
+  coach Coach?
+
+  authentications Authentication[]
+}
+
+model Coach {
+  id     Int   @id @default(autoincrement())
+  userId Int   @unique
+  user   User  @relation(fields: [userId], references: [id])
+
+  students Student[]
+}
+
+// Standard practice would be to store sessions in memory, e.g. with Redis
+// I could even do this in memory just using a javascript Map
+// However
+// 1. This is the fastest thing to get up and running
+// 2. I quite like having a permenant record of authentications and using it 
+//    for tracability. Rather than "change X was performed by user Y"
+//    "change X was perfomed under authentication Z", where authentication Z
+//    tells you the user, the time and mode of authention and any other metadata
+//    you wish to include.
+model Authentication {
+  id           String   @id @default(uuid())
+  createdAt    DateTime @default(now())
+  expires      DateTime @default(dbgenerated("(datetime('now','+1 day'))"))
+  userId       Int
+  user         User @relation(fields: [userId], references: [id])
+}
+
+model Student {
+   id     Int    @id @default(autoincrement())
+   userId Int @unique
+   user   User @relation(fields: [userId], references: [id])
+  
+   tasks Task[]
+
+   coachId Int
+   coaches Coach[]
+   //coach CoachProfile @relation(fields: [coachId], references: [id])
+ }
+
+model Task {
+  id Int @id @default(autoincrement())
+  studentId Int
+  student Student @relation(fields: [studentId], references: [id])
+  
+  // bout Bout @relation(fields: [boutId], references: [id])
+  // boutId Int
+  // missionId Int
+  // task Mission @relation(fields: [missionId], references: [id])
+  // allocatedDay  DateTime
+  // target        String
+  // allocatedTime Int
+  // startTime DateTime
+  // endTime   DateTime
+  // timeOffTask Int
+  // outcome     String
+}
+
+// model Bout {
+//   id    Int    @id @default(autoincrement())
+//   tasks Task[]
+
+//   intention String
+//   // day
+// }
+
+// // mission / assignment / undertaking  / persuit / objective / project / goal
+// model Mission {
+//  id      Int    @id @default(autoincrement())
+//  title   String
+//  details String
+
+//  dueDate     DateTime
+//  completedAt DateTime?
+
+//  tasks Task[]
+// }
+
+
+// Break
+// Task / Job / ....

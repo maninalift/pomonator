@@ -1,0 +1,22 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 info pnpm": {
+    "err": {
+      "name": "TypeError",
+      "message": "Cannot read properties of undefined (reading 'includes')",
+      "stack": "TypeError: Cannot read properties of undefined (reading 'includes')\n    at getCommandAbsolutePathSync (/usr/lib/node_modules/pnpm/dist/pnpm.cjs:43395:16)\n    at default_1 (/usr/lib/node_modules/pnpm/dist/pnpm.cjs:43410:32)\n    at /usr/lib/node_modules/pnpm/dist/pnpm.cjs:178536:39"
+    }
+  },
+  "2 error pnpm": {
+    "code": "ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL",
+    "prefix": "/home/caz/code/pomonator",
+    "err": {
+      "name": "pnpm",
+      "message": "Cannot read properties of undefined (reading 'includes')",
+      "code": "ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL",
+      "stack": "TypeError: Cannot read properties of undefined (reading 'includes')\n    at getCommandAbsolutePathSync (/usr/lib/node_modules/pnpm/dist/pnpm.cjs:43395:16)\n    at default_1 (/usr/lib/node_modules/pnpm/dist/pnpm.cjs:43410:32)\n    at /usr/lib/node_modules/pnpm/dist/pnpm.cjs:178536:39"
+    }
+  }
+}
